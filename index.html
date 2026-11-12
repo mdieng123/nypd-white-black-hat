@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYPD Complaint Outcomes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>NYPD Complaint Outcomes: White Hat and Black Hat</h1>
+        <p>
+            Our question: how often are complaints against NYPD officers substantiated, and does it depend on the type
+            of allegation or the officer's rank? Below are two charts made from the same data. The white hat chart tries
+            to answer the question honestly. The black hat chart is made to mislead on purpose.
+        </p>
+
+        <!-- ===== White hat (Person A) ===== -->
+        <h2>White Hat</h2>
+
+        <h3>Outcomes of allegations against NYPD officers, by type of allegation</h3>
+        <p>
+            About 1 in 4 allegations (25%) was substantiated. Force allegations were substantiated the least (13%),
+            but 46% were exonerated, which means the force did happen and NYPD rules allowed it.
+        </p>
+        <div id="white-type"></div>
+
+        <h3>Outcomes of allegations, by the officer's rank at the time</h3>
+        <p>
+            Substantiation rates are close across ranks, from 19% for lieutenants to 26% for police officers.
+            Captain and above has only 307 allegations, so its numbers are less reliable.
+        </p>
+        <div id="white-rank"></div>
+
+        <p class="note">
+            Substantiated: the board found the officer broke NYPD rules. Exonerated: it happened, but NYPD rules allowed it.
+            Unsubstantiated: the board could not confirm what happened. Each bar counts allegations, not complaints,
+            since one complaint can include several allegations. This data only covers officers who were still on the
+            force in June 2020 and had at least one substantiated allegation, and it leaves out allegations ruled
+            unfounded, so the rates here are higher than for all complaints the board receives.
+        </p>
+
+        <h3>White Hat Write Up</h3>
+        <p>
+            Our question is how often allegations against NYPD officers are substantiated, and whether that depends on
+            the type of allegation or the officer's rank.
+        </p>
+        <p>
+            The data comes from ProPublica, which got the records from New York City's Civilian Complaint Review Board
+            (CCRB) after the state repealed the law that kept police discipline records secret. It has 33,358 allegations
+            from 12,056 complaints against 3,996 officers, for cases closed between September 1985 and January 2020.
+            Each allegation has one of three outcomes. Substantiated means the CCRB found the officer broke NYPD rules.
+            Exonerated means the incident happened but NYPD rules allowed it. Unsubstantiated means the CCRB could not
+            confirm what happened.
+        </p>
+        <p>
+            The data is not a random sample. ProPublica only got records for officers still on the force in June 2020
+            who had at least one substantiated allegation, and it left out allegations the CCRB ruled unfounded. Both
+            of these make the substantiation rate in this data higher than for all complaints the CCRB gets, so we say
+            this right under the charts.
+        </p>
+        <p>
+            Data transformations: the raw data has nine kinds of substantiated outcome, such as Charges or Command
+            Discipline, which mostly describe the discipline the board recommended. We grouped them into one
+            Substantiated group, since our question is whether the allegation was confirmed, not the punishment. We kept
+            Exonerated and Unsubstantiated separate because they mean very different things. We used rank at the time of
+            the incident instead of the officer's current rank, and grouped Captain and all higher ranks together because
+            each of those ranks has very few allegations. Then we counted allegations for every type, rank and outcome,
+            and turned the counts into shares of each bar.
+        </p>
+        <p>
+            Design choices: we used 100% stacked horizontal bars because the question is about parts of a whole. Out of
+            all allegations of one kind, what share ended each way? Every bar uses the same scale from 0% to 100%, so the
+            bars can be compared directly. Allegation types are sorted by substantiation rate and ranks are in rank order.
+            Substantiated is the darkest color and starts at the left edge, so it is easy to compare across bars. We
+            avoided red and green so the colors don't suggest an outcome is good or bad. Each bar shows its total number
+            of allegations so readers can see that some groups are small, and hovering over a bar shows the exact count.
+            The labels say allegations, not complaints, because one complaint can include several allegations.
+        </p>
+        <p>
+            Other options we considered: a pie chart for each type was harder to compare, and bars of raw counts made
+            Abuse of Authority look like it had the most of every outcome just because it has the most allegations.
+        </p>
+
+        <!-- ===== Black hat (Person B) ===== -->
+        <h2>Black Hat</h2>
+        <div id="black-hat"></div>
+
+        <h3>Black Hat Write Up</h3>
+        <p>(Person B)</p>
+
+        <!-- ===== Shared sections ===== -->
+        <h2>Development Process</h2>
+        <p>(Person C: how we split the work, people hours, and what took the longest. See LOG.md.)</p>
+
+        <h2>AI Usage</h2>
+        <p>
+            Person A: early on we decided Person A would hand most of the work for their part to Claude. Cleaning the
+            data and setting up the page were mostly mechanical, and having Claude do them meant the shared setup was
+            ready the same day we got the data, so B and C could start right away. Claude read ProPublica's notes on the
+            data, wrote the cleaning script, set up the repo and page, built the white hat chart, and drafted the white
+            hat write up. It also laid out options for the black hat story and which tricks to use, and the group picked
+            from those options.
+        </p>
+        <p>Person B: (to fill in)</p>
+        <p>Person C: (to fill in)</p>
+
+        <h2>References</h2>
+        <ul>
+            <li>ProPublica, Civilian Complaints Against New York City Police Officers (data from the NYC Civilian
+                Complaint Review Board):
+                <a href="https://www.propublica.org/datastore/dataset/civilian-complaints-against-new-york-city-police-officers">link</a></li>
+            <li>ProPublica, "We're Publishing Thousands of Police Discipline Records That New York Kept Secret for Decades,"
+                July 26, 2020:
+                <a href="https://www.propublica.org/article/nypd-civilian-complaint-review-board-editors-note">link</a></li>
+            <li>D3.js version 7: <a href="https://d3js.org">link</a></li>
+            <li>Our Labs 4 and 5 code from CMSC471 (chart setup and tooltip)</li>
+        </ul>
+    </div>
+
+    <div id="tooltip" style="display:none"></div>
+
+    <!-- Load D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/whiteHat.js"></script>
+    <script src="js/blackHat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

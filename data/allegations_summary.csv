@@ -1,0 +1,57 @@
+allegation_type,rank,outcome,count
+Abuse of Authority,Captain and above,Exonerated,103
+Abuse of Authority,Captain and above,Substantiated,56
+Abuse of Authority,Captain and above,Unsubstantiated,51
+Abuse of Authority,Detective,Exonerated,596
+Abuse of Authority,Detective,Substantiated,552
+Abuse of Authority,Detective,Unsubstantiated,1017
+Abuse of Authority,Lieutenant,Exonerated,335
+Abuse of Authority,Lieutenant,Substantiated,194
+Abuse of Authority,Lieutenant,Unsubstantiated,355
+Abuse of Authority,Police Officer,Exonerated,3524
+Abuse of Authority,Police Officer,Substantiated,4230
+Abuse of Authority,Police Officer,Unsubstantiated,5135
+Abuse of Authority,Sergeant,Exonerated,1318
+Abuse of Authority,Sergeant,Substantiated,1140
+Abuse of Authority,Sergeant,Unsubstantiated,1686
+Discourtesy,Captain and above,Exonerated,2
+Discourtesy,Captain and above,Substantiated,7
+Discourtesy,Captain and above,Unsubstantiated,37
+Discourtesy,Detective,Exonerated,15
+Discourtesy,Detective,Substantiated,59
+Discourtesy,Detective,Unsubstantiated,360
+Discourtesy,Lieutenant,Exonerated,8
+Discourtesy,Lieutenant,Substantiated,33
+Discourtesy,Lieutenant,Unsubstantiated,129
+Discourtesy,Police Officer,Exonerated,170
+Discourtesy,Police Officer,Substantiated,819
+Discourtesy,Police Officer,Unsubstantiated,2357
+Discourtesy,Sergeant,Exonerated,38
+Discourtesy,Sergeant,Substantiated,108
+Discourtesy,Sergeant,Unsubstantiated,535
+Force,Captain and above,Exonerated,20
+Force,Captain and above,Substantiated,3
+Force,Captain and above,Unsubstantiated,19
+Force,Detective,Exonerated,247
+Force,Detective,Substantiated,68
+Force,Detective,Unsubstantiated,331
+Force,Lieutenant,Exonerated,101
+Force,Lieutenant,Substantiated,20
+Force,Lieutenant,Unsubstantiated,107
+Force,Police Officer,Exonerated,2639
+Force,Police Officer,Substantiated,795
+Force,Police Officer,Unsubstantiated,2287
+Force,Sergeant,Exonerated,491
+Force,Sergeant,Substantiated,90
+Force,Sergeant,Unsubstantiated,418
+Offensive Language,Captain and above,Substantiated,1
+Offensive Language,Captain and above,Unsubstantiated,8
+Offensive Language,Detective,Substantiated,8
+Offensive Language,Detective,Unsubstantiated,54
+Offensive Language,Lieutenant,Substantiated,1
+Offensive Language,Lieutenant,Unsubstantiated,18
+Offensive Language,Police Officer,Exonerated,2
+Offensive Language,Police Officer,Substantiated,101
+Offensive Language,Police Officer,Unsubstantiated,450
+Offensive Language,Sergeant,Substantiated,16
+Offensive Language,Sergeant,Unsubstantiated,94
