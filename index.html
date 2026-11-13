@@ -88,7 +88,57 @@
         <div id="black-hat"></div>
 
         <h3>Black Hat Write Up</h3>
-        <p>(Person B)</p>
+
+        <p>
+            Our black hat chart is designed to make readers believe that NYPD officers
+            are almost always cleared. It uses the same cleaned CSV as the white hat
+            charts and combines all officer ranks within each allegation type. The
+            misleading story comes from how we group, describe and emphasize the
+            outcomes, rather than from changing the original counts.
+        </p>
+
+        <p>
+            First, we merge Exonerated and Unsubstantiated into one category.
+            Exonerated means the incident happened but NYPD rules allowed it.
+            Unsubstantiated means the board could not establish what happened.
+            Combining them hides an important difference between permitted conduct
+            and insufficient evidence.
+        </p>
+
+        <p>
+            Second, we label the combined category Officer cleared. This suggests a
+            stronger conclusion than the data supports because an unsubstantiated
+            allegation does not establish that the officer acted properly. The title
+            reinforces this interpretation. About 75% of allegations fall into the
+            combined category, but describing that as almost always cleared
+            exaggerates both the frequency and the meaning of the result.
+        </p>
+
+        <p>
+            Third, the subtitle, axis, totals and tooltips call allegations complaints.
+            The dataset contains 33,358 allegations from 12,056 complaints. One
+            complaint can include several allegations, so the wording makes the
+            number of separate complaints appear much larger. The percentages
+            therefore describe allegations, even though the chart presents them
+            as complaint outcomes.
+        </p>
+
+        <p>
+            Fourth, dark blue makes the combined category visually dominant.
+            Substantiated outcomes use pale gray that blends into the white
+            background. Only the combined category receives percentage labels
+            inside the bars. Segment widths remain proportional, but the contrast
+            and selective labels encourage readers to overlook confirmed misconduct.
+        </p>
+
+        <p>
+            A full 0% to 100% axis, a legend, exact tooltip values and a source line
+            make the chart appear careful and trustworthy. The source line omits
+            the dataset's selection bias. These familiar presentation choices help
+            the misleading interpretation seem credible despite the problems
+            explained above.
+        </p>
+        
 
         <!-- ===== Shared sections ===== -->
         <h2>Development Process</h2>
