@@ -21,7 +21,8 @@
 
         <h3>Outcomes of allegations against NYPD officers, by type of allegation</h3>
         <p>
-            About 1 in 4 allegations (25%) was substantiated. Force allegations were substantiated the least (13%),
+            In this data, about 1 in 4 allegations (25%) was substantiated. This is higher than for all complaints,
+            because of who ProPublica included (see the note below the charts). Force allegations were substantiated the least (13%),
             but 46% were exonerated, which means the force did happen and NYPD rules allowed it.
         </p>
         <div id="white-type"></div>
@@ -37,8 +38,13 @@
             Substantiated: the board found the officer broke NYPD rules. Exonerated: it happened, but NYPD rules allowed it.
             Unsubstantiated: the board could not confirm what happened. Each bar counts allegations, not complaints,
             since one complaint can include several allegations. This data only covers officers who were still on the
-            force in June 2020 and had at least one substantiated allegation, and it leaves out allegations ruled
+            force in June 2020 and had at least one substantiated allegation, for cases closed from 1985 to 2020, and it leaves out allegations ruled
             unfounded, so the rates here are higher than for all complaints the board receives.
+            Hover over a bar to see exact numbers.
+        </p>
+        <p class="note">
+            Source: ProPublica, Civilian Complaints Against New York City Police Officers. Records from the NYC
+            Civilian Complaint Review Board.
         </p>
 
         <h3>White Hat Write Up</h3>
@@ -132,8 +138,12 @@
         </p>
 
         <p>
-            A full 0% to 100% axis, a legend, exact tooltip values and a source line
-            make the chart appear careful and trustworthy. The source line omits
+            A full 0% to 100% axis, a legend, exact tooltip values, a note that
+            defines each outcome and a source line make the chart appear careful
+            and trustworthy. The note says an officer was cleared when the board
+            did not substantiate the complaint. That sentence is true, but next
+            to the label Officer cleared it reads as if the officer was found
+            innocent. The source line omits
             the dataset's selection bias. These familiar presentation choices help
             the misleading interpretation seem credible despite the problems
             explained above.
@@ -142,7 +152,39 @@
 
         <!-- ===== Shared sections ===== -->
         <h2>Development Process</h2>
-        <p>(Person C: how we split the work, people hours, and what took the longest. See LOG.md.)</p>
+        <p>
+            We picked the dataset, the question, the black hat story and the four tricks together before anyone
+            started, and wrote the plan in PROJECT.md. That way each person could work on their own time without
+            waiting on the others. Everyone logged their hours and AI use in LOG.md, which is where the numbers
+            below come from.
+        </p>
+        <p>
+            Who did what. Person A (Mouhamadou) downloaded and cleaned the data, set up the repo and the page, built
+            the two white hat charts, and wrote the white hat write up and the references. Person B built the black
+            hat chart and wrote the black hat write up. Person C (Buruk) checked both charts against each other and
+            polished them, wrote this section and the AI usage section, ran the AI experiment described below,
+            recorded the demo video and made the submission zip.
+        </p>
+        <p>
+            People hours. Person A spent about 1 hour, Person B about 2 hours and Person C about 2 hours, so the
+            project took about 5 people hours in total.
+        </p>
+        <p>
+            What took the longest. The black hat chart and its write up took the most time. The hard part was
+            keeping every trick subtle. The chart had to mislead while still having everything a trustworthy chart
+            has, so we ruled out a truncated axis, 3D and pie charts and relied on grouping, wording and color
+            instead. Data cleaning took less time than we expected, because the outcome and rank columns only needed
+            to be grouped. For Person C, most of the time went into the AI experiment, since we had to crop each
+            chart so the AI could not see the words White Hat or Black Hat, and then compare its answers against our
+            list of tricks.
+        </p>
+        <p>
+            Polish changes Person C made. We gave both charts the same axis ticks (every 10%), so neither looks less
+            careful than the other. The white hat chart already had a note defining each outcome, so the black hat
+            got one too, because a chart without definitions looks less trustworthy. The black hat already had a
+            source line, so the white hat got one too. Both notes now tell readers they can hover over a bar for
+            exact numbers. We also tested the page in the browser and checked the console for errors.
+        </p>
 
         <h2>AI Usage</h2>
         <p>
@@ -153,8 +195,73 @@
             hat write up. It also laid out options for the black hat story and which tricks to use, and the group picked
             from those options.
         </p>
-        <p>Person B: (to fill in)</p>
-        <p>Person C: (to fill in)</p>
+        <p>
+            Person B: Person B used ChatGPT. It read the project files and wrote the black hat chart using the four
+            tricks the group agreed on, and it checked the CSV totals and the JavaScript syntax. It also drafted the
+            black hat write up, which Person B copied into the page, reviewed where the write up went in the HTML,
+            and helped write Person B's log entries. Browser testing of the black hat was finished during Person C's
+            polish pass.
+        </p>
+        <p>
+            Person C: Person C used Claude Code. It opened the page in a headless browser, compared the two charts
+            side by side and made the polish changes listed in the Development Process section. It also drafted this
+            section and the Development Process section from our LOG.md entries, which Person C then checked and
+            edited. Most of Person C's AI use went into the experiment below.
+        </p>
+
+        <h3>AI Experiment: Can an AI Spot Our Black Hat Tricks?</h3>
+        <p>
+            We wanted to use AI as a test reader, not only as a code writer. Our black hat chart is supposed to fool
+            a careful person, so we asked whether it would fool an AI that reads charts for a living. We took a
+            screenshot of each chart and cropped it so the words White Hat and Black Hat did not show. Then we
+            showed each image to fresh Claude instances that had no access to our files, our plan or this
+            conversation. Each chart got two prompts. The naive prompt was "A friend sent me this chart. What does
+            it tell me?" The skeptical prompt was "Is this chart fair and accurate? Point out anything that could
+            mislead a reader." That gave four runs in total. The full answers are saved in ai_experiment/ in our repo.
+        </p>
+        <table class="results">
+            <tr><th>Trick</th><th>Naive prompt</th><th>Skeptical prompt</th></tr>
+            <tr><td>1. Exonerated and Unsubstantiated merged</td><td>Partly. It said cleared lumps several outcomes together</td><td>Caught</td></tr>
+            <tr><td>2. Merged group called Officer cleared</td><td>Partly. It said cleared does not mean innocent, but repeated the headline anyway</td><td>Caught, high confidence</td></tr>
+            <tr><td>3. Allegations called complaints</td><td>Fooled. It said "33,358 civilian complaints"</td><td>Caught, but only from memory of the dataset</td></tr>
+            <tr><td>4. Dark cleared bars, pale substantiated bars</td><td>Fooled. Never mentioned</td><td>Caught, medium confidence</td></tr>
+            <tr><td>Hidden dataset bias</td><td>Not mentioned</td><td>Caught, medium confidence</td></tr>
+        </table>
+        <p>
+            What happened. With the naive prompt, the AI believed the story. Its main takeaway was that about 3 in 4
+            of 33,358 civilian complaints ended without a finding against the officer, and it pushed the story
+            further than our title did by pointing out that Force, the most serious type, had the highest cleared
+            rate. It did add a caution that cleared only means not substantiated, but that came from the
+            definitions note we added during polishing. Its caution also included a mistake. It said cleared could
+            mean the officer was shown not to have done it, but those unfounded allegations are not in this data at
+            all. With the skeptical prompt, the same model caught all four tricks and the hidden bias. It checked
+            that the totals add up, said the layout was honest, and blamed the wording. For the white hat chart,
+            both prompts gave an accurate summary, and the skeptical run found no visual tricks.
+        </p>
+        <p>
+            What we learned. First, the question mattered more than the chart. The same model was fooled when asked
+            casually and caught everything when asked to look for problems, and most real readers look at charts
+            casually. Second, the AI trusted words more than pictures. Even when skeptical, it rated our color trick
+            only medium confidence and called it subjective, while it was sure about every label problem. Our
+            quietest trick was also our hardest to catch. Third, the complaints trick could not be caught from the
+            chart at all. The skeptical run only caught it because it remembered that the ProPublica data has one
+            row per allegation and about 12,000 complaints. A reader who does not already know the dataset has no
+            way to notice, which is why we think it is our strongest trick. Fourth, adding a note that looks careful
+            made the chart more trustworthy but also gave readers a clue, since the note says did not substantiate
+            right next to the label Officer cleared. A real bad actor would probably leave that note out.
+        </p>
+        <p>
+            The AI was also useful as a reviewer for our white hat. The skeptical run pointed out that the warning
+            about who is in the data sat in small print under the charts, far from the 25% headline, and that the
+            chart never said which years it covers. We fixed both: the headline now says the rate is for this data
+            and points to the note, and the note gives the years.
+        </p>
+        <p>
+            Limits. We ran each prompt once, so this is a small test, not a study. All four runs used Claude, the
+            same family of model that helped build the page, so another chatbot might do better or worse. The test
+            instances could not see our files, but the folder name of the screenshots included the project name,
+            which could have hinted that a chart might be misleading.
+        </p>
 
         <h2>References</h2>
         <ul>

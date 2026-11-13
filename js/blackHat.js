@@ -118,7 +118,6 @@ function drawBlackHat(data) {
     .attr('transform', `translate(0, ${height})`)
     .call(
       d3.axisBottom(x)
-        .ticks(5)
         .tickFormat(d3.format('.0%'))
     );
 
@@ -199,6 +198,17 @@ function drawBlackHat(data) {
     .attr('x', (d, i) => i * 180 + 18)
     .attr('y', -25)
     .text(d => d);
+
+  // Polish (Person C): a definitions note like the white hat has, so the chart
+  // looks just as careful. "Did not substantiate" is true, but next to the
+  // label "Officer cleared" it reads as if the officer was found innocent.
+  container.append('p')
+    .attr('class', 'note')
+    .text(
+      'Officer cleared: the review board did not substantiate the complaint. ' +
+      'Substantiated: the board found the officer broke NYPD rules. ' +
+      'Hover over a bar to see exact numbers.'
+    );
 
   container.append('p')
     .attr('class', 'note')

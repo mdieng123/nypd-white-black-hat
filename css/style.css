@@ -43,3 +43,18 @@
   pointer-events: none; /* So the tooltip doesn't block the mouse */
   font-size: 12px;
 }
+
+/* AI experiment results table */
+.results {
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 1rem 0;
+}
+
+.results th,
+.results td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
