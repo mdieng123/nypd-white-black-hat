@@ -4,19 +4,8 @@ CMSC471 Assignment 2. Two charts from the same NYPD complaint data, one honest a
 
 Live site: https://mdieng123.github.io/nypd-white-black-hat/
 
-## Status: where to pick up
-**Person A is done:** data cleaning, repo and page setup, the white hat charts (`js/whiteHat.js`), the white hat write up, and references.
-
-**Person B, next:**
-1. Replace the placeholder in `js/blackHat.js` with the black hat chart. The plan and the four tricks are in `PROJECT.md`.
-2. Write the Black Hat Write Up section in `index.html`.
-
-**Person C, next:**
-1. Polish both charts so they look equally trustworthy.
-2. Write the Development Process section and the B and C parts of AI Usage in `index.html`.
-3. Do the AI extra credit experiment (see `PROJECT.md`), record the demo video and make the zip.
-
-**For everyone's AI assistant:** read `PROJECT.md` first, and copy the style of `js/whiteHat.js` and our lab code. Keep page text plain with no dashes. Add a line to `LOG.md` every time you work.
+## Status
+All three parts are done: data and white hat (Mouhamadou Dieng), black hat (Meksud Buser), and polish, development process, AI usage, the AI experiment and the demo video (Buruk Ayalew). See `SUBMISSION.md` for the video script, the zip script and the Extra Credit text for Canvas. The raw AI experiment answers are in `ai_experiment/`.
 
 ## Run locally
 ```bash
